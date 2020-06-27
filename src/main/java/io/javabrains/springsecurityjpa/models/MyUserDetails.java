@@ -14,6 +14,7 @@ public class MyUserDetails implements UserDetails {
     private String userName;
     private String password;
     private boolean active;
+    private int bankBalance;
     private List<GrantedAuthority> authorities;
 
     public MyUserDetails(User user) {
@@ -23,6 +24,7 @@ public class MyUserDetails implements UserDetails {
         this.authorities = Arrays.stream(user.getRoles().split(","))
                     .map(SimpleGrantedAuthority::new)
                     .collect(Collectors.toList());
+        this.bankBalance = user.getBankBalance();
     }
 
     @Override
@@ -59,4 +61,7 @@ public class MyUserDetails implements UserDetails {
     public boolean isEnabled() {
         return active;
     }
+
+
+    public int getBankBalance() { return bankBalance; }
 }

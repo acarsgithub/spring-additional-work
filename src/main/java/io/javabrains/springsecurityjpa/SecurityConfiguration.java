@@ -23,11 +23,17 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // ordering the functions within the chain from least to most secure will lead to vulnerabilities
+        // having ("/**) being available to everyone first will nullify any authorizations afterwards
         http.authorizeRequests()
+                .antMatchers("/admin/bank-balance").hasRole("ADMIN")
                 .antMatchers("/admin").hasRole("ADMIN")
                 .antMatchers("/user").hasAnyRole("ADMIN", "USER")
                 .antMatchers("/").permitAll()
                 .and().formLogin();
+
+        // disable CSRF to cause vulnerability
+        http.csrf().disable();
     }
 
     @Bean

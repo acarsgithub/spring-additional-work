@@ -11,6 +11,7 @@ public class User {
     private String userName;
     private String password;
     private boolean active;
+    private int bankBalance;
     private String roles;
 
     public int getId() {
@@ -52,4 +53,8 @@ public class User {
     public void setRoles(String roles) {
         this.roles = roles;
     }
+
+    public int getBankBalance(){ return this.bankBalance; }
+
+    public void setBankBalance(int balance) { this.bankBalance = balance; }
 }
