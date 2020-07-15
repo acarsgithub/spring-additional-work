@@ -25,7 +25,7 @@ public class HomeResource {
     }
 
 
-    @GetMapping("/admin/bank-balance")
+    @GetMapping("/admin/balance")
     public String adminBankBalance(@RequestParam("password") String password) {
 
         // JDBC driver name and database URL
