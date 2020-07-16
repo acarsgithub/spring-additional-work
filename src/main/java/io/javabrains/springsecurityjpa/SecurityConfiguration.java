@@ -26,9 +26,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         // ordering the functions within the chain from least to most secure will lead to vulnerabilities
         // having ("/**) being available to everyone first will nullify any authorizations afterwards
         http.authorizeRequests()
-                .antMatchers("/admin/bank-balance").hasRole("ADMIN")
-                .antMatchers("/admin").hasRole("ADMIN")
-                .antMatchers("/user").hasAnyRole("ADMIN", "USER")
+                .antMatchers("xss-concat").permitAll()
+                .antMatchers("/xss-thyme").permitAll()
                 .antMatchers("/").permitAll()
                 .and().formLogin();
 
