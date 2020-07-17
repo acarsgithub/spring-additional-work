@@ -30,6 +30,7 @@ public class HomeResource {
 
     // ############################################################################################################
 
+
     /*
         Method: xssThymeleaf
         Purpose: This method is a simple get request to demonstrate how an unchecked Request Parameter could
@@ -155,6 +156,20 @@ public class HomeResource {
     @ResponseBody
     public String csrf(){
         return "<a href='http://localhost:8080/transaction?id=3&amount=1000'>Definitely Not Malicious CSRF Link (But it totally is)</a>";
+    }
+
+    // #############################################################################################################
+
+
+    /*
+        Method: admin-only
+        Purpose: Literally just a page that should be viewable by the admin only
+        Implementing Vulnerability: Just log in as a regular user, and notice regular users have access
+                to this page (although, they shouldn't)
+     */
+    @GetMapping("/admin-only")
+    public String adminOnly(){
+        return "<h2><center>Only the admin should be able to see this page!</center></h2>";
     }
 
 
