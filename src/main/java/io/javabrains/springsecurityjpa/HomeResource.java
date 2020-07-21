@@ -35,12 +35,14 @@ public class HomeResource {
     Thymeleaf Template
      */
     @GetMapping("/thymeleaf")
-    public String home(Model model,
-                       @RequestParam(value = "name", required = false,
-                               defaultValue = "Guest") String name) {
-
-        model.addAttribute("name", name);
+    public String home() {
         return "index";
+    }
+
+
+    @GetMapping("/react")
+    public String react() {
+        return "react";
     }
 
 }

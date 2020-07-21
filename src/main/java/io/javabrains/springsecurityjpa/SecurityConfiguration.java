@@ -31,10 +31,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/user").hasAnyRole("ADMIN", "USER")
                 .antMatchers("/").permitAll()
                 .antMatchers("/thymeleaf").permitAll()
+                .antMatchers("/react").permitAll()
                 .and().formLogin();
-
-        // disable CSRF to cause vulnerability
-        http.csrf().disable();
     }
 
     @Bean

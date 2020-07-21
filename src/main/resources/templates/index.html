@@ -6,7 +6,13 @@
 <body>
 <div class="page-content">
     <h1 th:text="|Hello User!|"></h1>
-    <h2 th:text="|Welcome to AdvertApp. You can access the catalog by going to "/catalog""|"></h2>
+    <!--Todo Comment and explain the unescaped string... this one works for now-->
+    <h2 th:text="|Welcome to the Spring Security Demo.|"></h2>
+<!--    <h2 th:text="|Welcome to the "Spring Security Demo".|"></h2>-->
+    <script>
+        let d = new Date();
+        alert("Today's date is " + d);
+    </script>
 </div>
 </body>
 </html>
